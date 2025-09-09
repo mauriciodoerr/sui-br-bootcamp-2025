@@ -4,22 +4,26 @@ use sui::dynamic_field;
 use std::vector::push_back;
 use sui::random::{Random, new_generator};
 
+const EInvalidAccess: u64 = 0;
+const EDrawDisabled: u64 = 1;
+
 public struct Draw has key, store {
     id: UID,
     owner: address,
-    participants: vector<address>
+    participants: vector<address>,
+    enabled: bool
 }
 
 public fun new_draw(
     participants: vector<address>,
     ctx: &mut TxContext) {
-    let mut set_draw = Draw {
+    let set_draw = Draw {
         id: object::new(ctx),
         owner: ctx.sender(),
-        participants
+        participants,
+        enabled: true
     };
 
-    dynamic_field::add(&mut set_draw.id, b"enabled", true);
     transfer::share_object(set_draw);
 }
 
@@ -35,14 +39,16 @@ entry fun exec(
     r: &Random,
     ctx: &mut TxContext
 ) {
+    assert!(ctx.sender() == draw.owner, EInvalidAccess);
+    assert!(draw.enabled == true, EDrawDisabled);
+
     let participants: vector<address> = draw.participants;
 
     let mut generator = r.new_generator(ctx);
     let winner = generator.generate_u64_in_range(0, participants.length() - 1);
 
-    let winner_address = participants[winner as u64];
+    let winner_address: address = participants[winner as u64];
     dynamic_field::add(&mut draw.id, b"winner", winner_address);
 
-    let _old_status: bool = dynamic_field::remove(&mut draw.id, b"enabled");
-    dynamic_field::add(&mut draw.id, b"enabled", false);
+    draw.enabled = false;
 }
