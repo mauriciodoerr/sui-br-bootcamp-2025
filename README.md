@@ -32,7 +32,7 @@ This will made the owner able to set the NFT properties with custom image to be 
 With the same `PackageID` you can now create draws with following command:
 
 ```shell
-sui client call --package <PackageID> --module draw --function new_draw --args '[<address1>, <address2>]' --gas-budget 50000000
+sui client call --package <PackageID> --module draw --function new_draw --args '[<address1>, ... ,<addressN>]' --gas-budget 50000000
 ```
 
 On the ouput `Object Changes`, make sure to save the Created Objects `ObjectID`, this is your draw reference.
