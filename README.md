@@ -13,7 +13,7 @@ For Smart Contract deployment, make sure you execute the following command:
 sui client publish --gas-budget 50000000
 ```
 
-From the output on `Object Changes` make sure to save the `PackageID` and the first Created Object `ObjectID`.
+From the output on `Object Changes` make sure to save the `PackageID` and check on Created Objects for `ObjectID` of the ObjectType `Publisher`.
 
 #### 2. NFT Wallet Display Setup
 

@@ -20,3 +20,5 @@ Thumbs.db
 # Sui
 sui_contract/.sui/
 *.lock
+
+notes.txt
