@@ -1,0 +1,22 @@
+# Dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Build outputs
+frontend/build/
+sui_contract/build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sui
+sui_contract/.sui/
+*.lock
