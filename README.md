@@ -9,7 +9,7 @@ Basically by inputing an array of addresses, using random number execution on th
 
 For Smart Contract deployment, make sure you execute the following command:
 
-```shell
+```bash
 sui client publish --gas-budget 50000000
 ```
 
@@ -19,7 +19,7 @@ From the output on `Object Changes` make sure to save the `PackageID` and check 
 
 With the `PackageID` and `ObjectID` from last step, run the following command:
 
-```shell
+```bash
 sui client call --function create_display --module draw --package <PackageID> --args <ObjectID> --gas-budget 10000000
 ```
 
@@ -31,7 +31,7 @@ This will made the owner able to set the NFT properties with custom image to be 
 
 With the same `PackageID` you can now create draws with following command:
 
-```shell
+```bash
 sui client call --package <PackageID> --module draw --function new_draw --args '[<address1>, ... ,<addressN>]' --gas-budget 50000000
 ```
 
@@ -41,7 +41,7 @@ On the ouput `Object Changes`, make sure to save the Created Objects `ObjectID`,
 
 Now you can draw the image you want the winner to receive as a NFT!!!
 
-```shell
+```bash
 sui client call --package <PackageID> --module draw --function exec --args <ObjectID> 0x8 <Image URL> --gas-budget 50000000
 ```
 
@@ -55,7 +55,7 @@ Check for the winner assets and you will be able to see the awarded NFT.
 ## Walrus Setup
 Install Walrus by running
 
-```shell
+```bash
 suiup install walrus
 ```
 
@@ -63,25 +63,25 @@ Make sure to setup a config for Walrus
 
 Before setting the config, make sure you have the folder `~/.config/walrus` available, if not, create it.
 
-```shell
+```bash
 curl https://docs.wal.app/setup/client_config.yaml -o ~/.config/walrus/client_config.yaml
 ```
 
 If you don't have Testnet available via CLI, make sure to set the env with following command:
 
-```shell
+```bash
 sui client new-env --alias testnet --rpc https://fullnode.testnet.sui.io:443
 ```
 
 Once setup, switch to it:
 
-```shell
+```bash
 sui client switch --env testnet
 ```
 
 Now you need some WAL balance, exchange some SUI for WAL with following command:
 
-```shell
+```bash
 walrus get-wal --amount 100000000 --context testnet
 ```
 
@@ -91,7 +91,7 @@ This will exchange 0.1 SUI for 0.1 WAL and you can check by running `sui client 
 
 You can go to `/walrus` and to store in Walrus:
 
-```shell
+```bash
 walrus store sui_logo.png --epochs 1 --context testnet
 ```
 
@@ -99,7 +99,7 @@ Make sure to save the `Blob ID`
 
 With the `Blob ID` you can execute the draw:
 
-```shell
+```bash
 sui client call --package <PackageID> --module draw --function exec --args <ObjectID> 0x8 https://aggregator.walrus-testnet.walrus.space/v1/blobs/<Blob ID> --gas-budget 50000000
 ```
 
