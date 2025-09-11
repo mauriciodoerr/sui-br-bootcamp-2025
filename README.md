@@ -45,7 +45,7 @@ Now you can draw the image you want the winner to receive as a NFT!!!
 sui client call --package <PackageID> --module draw --function exec --args <ObjectID> 0x8 <Image URL> --gas-budget 50000000
 ```
 
-With you `ObjectID`, you can go to https://suiscan.xyz/devnet/object/<ObjectID\>/fields and check for the created Dynamic Field and its content will display the value as the winner address.
+With you `ObjectID`, you can go to `https://suiscan.xyz/devnet/object/<ObjectID>/fields` and check for the created Dynamic Field and its content will display the value as the winner address.
 
 Check for the winner assets and you will be able to see the awarded NFT.
 
