@@ -11,13 +11,13 @@ function App() {
   
   // Estado para o formulário de NFT
   const [nftForm, setNftForm] = useState({
-    packageId: '0x8b09ba2b6f027a96ed8dd9badc8d84053fb773ee078582100525927d519965b6',
+    packageId: '0x64821b2e26d21bdde9fe266387721ddb4509dcf201363b6d2dc4ec13b0d26ac1',
     participants: ''
   });
 
   const [execForm, setExecForm] = useState({
     sharedObjectId: '',
-    imageUrl: 'https://aggregator.walrus-testnet.walrus.space/v1/blobs/VS_wCfogN3g2LkKT6ukUC6PVG8SDHg9FsxjkGarc3Lc'
+    imageUrl: 'https://cdn3d.iconscout.com/3d/premium/thumb/sui-3d-icon-png-download-8000692.png?f=webp'
   });
 
   const [showForm, setShowForm] = useState(true); // Iniciar aberto para mostrar que precisa configurar
@@ -80,7 +80,7 @@ function App() {
       {
         onSuccess: (result) => { 
           console.log('Draw created! Digest:', result.digest);
-          alert(`Draw created, copy the shared object id and Draw! View on explorer: https://suiscan.xyz/devnet/tx/${result.digest}`);
+          alert(`Draw created, copy the shared object id and Draw! View on explorer: https://suiscan.xyz/mainnet/tx/${result.digest}`);
         },
         onError: (error: Error) => {
           console.error('Error', error);
@@ -122,7 +122,7 @@ function App() {
       {
         onSuccess: (result) => { 
           console.log('Check for the winner!', execForm.sharedObjectId);
-          alert(`Draw created, copy the shared object id and Draw! View on explorer: https://suiscan.xyz/devnet/tx/${result.digest}`);
+          alert(`Draw created, copy the shared object id and Draw! View on explorer: https://suiscan.xyz/mainnet/tx/${result.digest}`);
         },
         onError: (error: Error) => {
           console.error('Error', error);
@@ -276,7 +276,7 @@ function App() {
                     </div>
                     <div className="mint-info-item">
                       <span className="mint-info-label">Network:</span>
-                      <span className="mint-info-value">Devnet</span>
+                      <span className="mint-info-value">Mainnet</span>
                     </div>
                   </div>
                 )}
